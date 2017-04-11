@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-prerender-node/prerender-node/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-prerender-node">npmtest-prerender-node (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-prerender-node/prerender-node/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">13.45% <small>(16 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">15.53% <small>(16 / 103)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-prerender-node/prerender-node/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var request = require('request')
+  , url = require('url')
+  , zlib = require('zlib');
+&nbsp;
+var prerender = module.exports = <span class="fstat-no" title="function not covered" >function(req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  if(!prerender.shouldShowPrerenderedPage(req)) <span class="cstat-no" title="statement not covered" >return next();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  prerender.beforeRenderFn(req, <span class="fstat-no" title="function not covered" >function(err, cachedRender) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (!err &amp;&amp; cachedRender) {</span>
+<span class="cstat-no" title="statement not covered" >      if (typeof cachedRender == 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(200, {</span>
+          "Content-Type": "text/html"
+        });
+<span class="cstat-no" title="statement not covered" >        return res.end(cachedRender);</span>
+      } else <span class="cstat-no" title="statement not covered" >if (typeof cachedRender == 'object') {</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(cachedRender.status || 200, {</span>
+          "Content-Type": "text/html"
+        });
+<span class="cstat-no" title="statement not covered" >        return res.end(cachedRender.body || '');</span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    prerender.getPrerenderedPageResponse(req, <span class="fstat-no" title="function not covered" >function(err, prerenderedResponse){</span></span>
+<span class="cstat-no" title="statement not covered" >      prerender.afterRenderFn(err, req, prerenderedResponse);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if(prerenderedResponse){</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(prerenderedResponse.statusCode, prerenderedResponse.headers);</span>
+<span class="cstat-no" title="statement not covered" >        return res.end(prerenderedResponse.body);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        next(err);</span>
+      }
+    });
+  });
+};
+&nbsp;
+// googlebot, yahoo, and bingbot are not in this list because
+// we support _escaped_fragment_ and want to ensure people aren't
+// penalized for cloaking.
+prerender.crawlerUserAgents = [
+  // 'googlebot',
+  // 'yahoo',
+  // 'bingbot',
+  'baiduspider',
+  'facebookexternalhit',
+  'twitterbot',
+  'rogerbot',
+  'linkedinbot',
+  'embedly',
+  'quora link preview',
+  'showyoubot',
+  'outbrain',
+  'pinterest/0.',
+  'developers.google.com/+/web/snippet',
+  'slackbot',
+  'vkShare',
+  'W3C_Validator',
+  'redditbot',
+  'Applebot',
+  'WhatsApp',
+  'flipboard',
+  'tumblr',
+  'bitlybot',
+  'SkypeUriPreview',
+  'nuzzel',
+  'Discordbot',
+  'Google Page Speed'
+];
+&nbsp;
+&nbsp;
+prerender.extensionsToIgnore = [
+  '.js',
+  '.css',
+  '.xml',
+  '.less',
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.gif',
+  '.pdf',
+  '.doc',
+  '.txt',
+  '.ico',
+  '.rss',
+  '.zip',
+  '.mp3',
+  '.rar',
+  '.exe',
+  '.wmv',
+  '.doc',
+  '.avi',
+  '.ppt',
+  '.mpg',
+  '.mpeg',
+  '.tif',
+  '.wav',
+  '.mov',
+  '.psd',
+  '.ai',
+  '.xls',
+  '.mp4',
+  '.m4a',
+  '.swf',
+  '.dat',
+  '.dmg',
+  '.iso',
+  '.flv',
+  '.m4v',
+  '.torrent',
+  '.woff',
+  '.ttf',
+  '.svg'
+];
+&nbsp;
+&nbsp;
+prerender.whitelisted = <span class="fstat-no" title="function not covered" >function(whitelist) {</span>
+<span class="cstat-no" title="statement not covered" >  prerender.whitelist = typeof whitelist === 'string' ? [whitelist] : whitelist;</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
+};
+&nbsp;
+&nbsp;
+prerender.blacklisted = <span class="fstat-no" title="function not covered" >function(blacklist) {</span>
+<span class="cstat-no" title="statement not covered" >  prerender.blacklist = typeof blacklist === 'string' ? [blacklist] : blacklist;</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
+};
+&nbsp;
+&nbsp;
+prerender.shouldShowPrerenderedPage = <span class="fstat-no" title="function not covered" >function(req) {</span>
+<span class="cstat-no" title="statement not covered" >  var userAgent = req.headers['user-agent']</span>
+    , bufferAgent = req.headers['x-bufferbot']
+    , isRequestingPrerenderedPage = false;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(!userAgent) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(req.method != 'GET' &amp;&amp; req.method != 'HEAD') <span class="cstat-no" title="statement not covered" >return false;</span></span>
+&nbsp;
+  //if it contains _escaped_fragment_, show prerendered page
+<span class="cstat-no" title="statement not covered" >  var parsedQuery = url.parse(req.url, true).query;</span>
+<span class="cstat-no" title="statement not covered" >  if(parsedQuery &amp;&amp; parsedQuery['_escaped_fragment_'] !== undefined) <span class="cstat-no" title="statement not covered" >isRequestingPrerenderedPage = true;</span></span>
+&nbsp;
+  //if it is a bot...show prerendered page
+<span class="cstat-no" title="statement not covered" >  if(prerender.crawlerUserAgents.some(<span class="fstat-no" title="function not covered" >function(crawlerUserAgent){</span> <span class="cstat-no" title="statement not covered" >return userAgent.toLowerCase().indexOf(crawlerUserAgent.toLowerCase()) !== -1;}</span>)) <span class="cstat-no" title="statement not covered" >isRequestingPrerenderedPage = true;</span></span>
+&nbsp;
+  //if it is BufferBot...show prerendered page
+<span class="cstat-no" title="statement not covered" >  if(bufferAgent) <span class="cstat-no" title="statement not covered" >isRequestingPrerenderedPage = true;</span></span>
+&nbsp;
+  //if it is a bot and is requesting a resource...dont prerender
+<span class="cstat-no" title="statement not covered" >  if(prerender.extensionsToIgnore.some(<span class="fstat-no" title="function not covered" >function(extension){<span class="cstat-no" title="statement not covered" ></span>return req.url.toLowerCase().indexOf(extension) !== -1;}</span>)) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+&nbsp;
+  //if it is a bot and not requesting a resource and is not whitelisted...dont prerender
+<span class="cstat-no" title="statement not covered" >  if(Array.isArray(this.whitelist) &amp;&amp; this.whitelist.every(<span class="fstat-no" title="function not covered" >function(whitelisted){<span class="cstat-no" title="statement not covered" ></span>return (new RegExp(whitelisted)).test(req.url) === false;}</span>)) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+&nbsp;
+  //if it is a bot and not requesting a resource and is not blacklisted(url or referer)...dont prerender
+<span class="cstat-no" title="statement not covered" >  if(Array.isArray(this.blacklist) &amp;&amp; this.blacklist.some(<span class="fstat-no" title="function not covered" >function(blacklisted){</span></span>
+<span class="cstat-no" title="statement not covered" >    var blacklistedUrl = false</span>
+      , blacklistedReferer = false
+      , regex = new RegExp(blacklisted);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    blacklistedUrl = regex.test(req.url) === true;</span>
+<span class="cstat-no" title="statement not covered" >    if(req.headers['referer']) <span class="cstat-no" title="statement not covered" >blacklistedReferer = regex.test(req.headers['referer']) === true;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return blacklistedUrl || blacklistedReferer;</span>
+  })) <span class="cstat-no" title="statement not covered" >return false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return isRequestingPrerenderedPage;</span>
+};
+&nbsp;
+&nbsp;
+prerender.prerenderServerRequestOptions = {};
+&nbsp;
+prerender.getPrerenderedPageResponse = <span class="fstat-no" title="function not covered" >function(req, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var options = {</span>
+    uri: url.parse(prerender.buildApiUrl(req)),
+    followRedirect: false,
+    headers: {}
+  };
+<span class="cstat-no" title="statement not covered" >  for (var attrname in this.prerenderServerRequestOptions) { <span class="cstat-no" title="statement not covered" >options[attrname] = this.prerenderServerRequestOptions[attrname]; </span>}</span>
+<span class="cstat-no" title="statement not covered" >  if (this.forwardHeaders === true) {</span>
+<span class="cstat-no" title="statement not covered" >    Object.keys(req.headers).forEach(<span class="fstat-no" title="function not covered" >function(h) {</span></span>
+      // Forwarding the host header can cause issues with server platforms that require it to match the URL
+<span class="cstat-no" title="statement not covered" >      if (h == 'host') {</span>
+<span class="cstat-no" title="statement not covered" >        return;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      options.headers[h] = req.headers[h];</span>
+    });
+  }
+<span class="cstat-no" title="statement not covered" >  options.headers['User-Agent'] = req.headers['user-agent'];</span>
+<span class="cstat-no" title="statement not covered" >  options.headers['Accept-Encoding'] = 'gzip';</span>
+<span class="cstat-no" title="statement not covered" >  if(this.prerenderToken || process.env.PRERENDER_TOKEN) {</span>
+<span class="cstat-no" title="statement not covered" >    options.headers['X-Prerender-Token'] = this.prerenderToken || process.env.PRERENDER_TOKEN;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  request.get(options).on('response', <span class="fstat-no" title="function not covered" >function(response) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if(response.headers['content-encoding'] &amp;&amp; response.headers['content-encoding'] === 'gzip') {</span>
+<span class="cstat-no" title="statement not covered" >      prerender.gunzipResponse(response, callback);</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      prerender.plainResponse(response, callback);</span>
+    }
+  }).on('error', <span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >    callback(err);</span>
+  });
+};
+&nbsp;
+prerender.gunzipResponse = <span class="fstat-no" title="function not covered" >function(response, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var gunzip = zlib.createGunzip()</span>
+    , content = '';
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  gunzip.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+<span class="cstat-no" title="statement not covered" >    content += chunk;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  gunzip.on('end', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    response.body = content;</span>
+<span class="cstat-no" title="statement not covered" >    delete response.headers['content-encoding'];</span>
+<span class="cstat-no" title="statement not covered" >    delete response.headers['content-length'];</span>
+<span class="cstat-no" title="statement not covered" >    callback(null, response);</span>
+  });
+<span class="cstat-no" title="statement not covered" >  gunzip.on('error', <span class="fstat-no" title="function not covered" >function(err){</span></span>
+<span class="cstat-no" title="statement not covered" >    callback(err);</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  response.pipe(gunzip);</span>
+};
+&nbsp;
+prerender.plainResponse = <span class="fstat-no" title="function not covered" >function(response, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var content = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  response.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+<span class="cstat-no" title="statement not covered" >    content += chunk;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  response.on('end', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    response.body = content;</span>
+<span class="cstat-no" title="statement not covered" >    callback(null, response);</span>
+  });
+};
+&nbsp;
+&nbsp;
+prerender.buildApiUrl = <span class="fstat-no" title="function not covered" >function(req) {</span>
+<span class="cstat-no" title="statement not covered" >  var prerenderUrl = prerender.getPrerenderServiceUrl();</span>
+<span class="cstat-no" title="statement not covered" >  var forwardSlash = prerenderUrl.indexOf('/', prerenderUrl.length - 1) !== -1 ? '' : '/';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var protocol = req.connection.encrypted ? "https" : "http";</span>
+<span class="cstat-no" title="statement not covered" >  if (req.headers['cf-visitor']) {</span>
+<span class="cstat-no" title="statement not covered" >    var match = req.headers['cf-visitor'].match(/"scheme":"(http|https)"/);</span>
+<span class="cstat-no" title="statement not covered" >    if (match) <span class="cstat-no" title="statement not covered" >protocol = match[1];</span></span>
+  }
+<span class="cstat-no" title="statement not covered" >  if (req.headers['x-forwarded-proto']) {</span>
+<span class="cstat-no" title="statement not covered" >    protocol = req.headers['x-forwarded-proto'].split(',')[0];</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if (this.protocol) {</span>
+<span class="cstat-no" title="statement not covered" >    protocol = this.protocol;</span>
+  }
+<span class="cstat-no" title="statement not covered" >  var fullUrl = protocol + "://" + (this.host || req.headers['x-forwarded-host'] || req.headers['host']) + req.url;</span>
+<span class="cstat-no" title="statement not covered" >  return prerenderUrl + forwardSlash + fullUrl;</span>
+};
+&nbsp;
+prerender.getPrerenderServiceUrl = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  return this.prerenderServiceUrl || process.env.PRERENDER_SERVICE_URL || 'http://service.prerender.io/';</span>
+};
+&nbsp;
+prerender.beforeRenderFn = <span class="fstat-no" title="function not covered" >function(req, done) {</span>
+<span class="cstat-no" title="statement not covered" >  if (!this.beforeRender) <span class="cstat-no" title="statement not covered" >return done();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return this.beforeRender(req, done);</span>
+};
+&nbsp;
+&nbsp;
+prerender.afterRenderFn = <span class="fstat-no" title="function not covered" >function(err, req, prerender_res) {</span>
+<span class="cstat-no" title="statement not covered" >  if (!this.afterRender) <span class="cstat-no" title="statement not covered" >return;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.afterRender(err, req, prerender_res);</span>
+};
+&nbsp;
+&nbsp;
+prerender.set = <span class="fstat-no" title="function not covered" >function(name, value) {</span>
+<span class="cstat-no" title="statement not covered" >  this[name] = value;</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 23:55:55 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
