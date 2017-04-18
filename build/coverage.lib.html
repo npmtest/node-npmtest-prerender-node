@@ -1,5 +1,7 @@
-<html lang="en"><head>
-    <title>Code coverage report for node-npmtest-prerender-node/prerender-node/index.js</title>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-prerender-node/node_modules/prerender-node/index.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -192,7 +194,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-prerender-node">npmtest-prerender-node (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-prerender-node/prerender-node/index.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-prerender-node/node_modules/prerender-node/index.js</span></h1>
     <h2>
         
         Statements: <span class="metric">13.45% <small>(16 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,11 +210,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> » <a href="index.html">node-npmtest-prerender-node/prerender-node/</a> » index.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-prerender-node/node_modules/prerender-node/</a> &#187; index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tbody><tr><td class="line-count">1
+<tr><td class="line-count">1
 2
 3
 4
@@ -489,7 +491,8 @@
 275
 276
 277
-278</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+278
+279</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -529,6 +532,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -770,33 +774,33 @@
   , url = require('url')
   , zlib = require('zlib');
 &nbsp;
-var prerender = module.exports = <span class="fstat-no" title="function not covered">function(req, res, next) {</span>
-<span class="cstat-no" title="statement not covered">  if(!prerender.shouldShowPrerenderedPage(req)) <span class="cstat-no" title="statement not covered">return next();</span></span>
+var prerender = module.exports = <span class="fstat-no" title="function not covered" >function(req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  if(!prerender.shouldShowPrerenderedPage(req)) <span class="cstat-no" title="statement not covered" >return next();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">  prerender.beforeRenderFn(req, <span class="fstat-no" title="function not covered">function(err, cachedRender) {</span></span>
+<span class="cstat-no" title="statement not covered" >  prerender.beforeRenderFn(req, <span class="fstat-no" title="function not covered" >function(err, cachedRender) {</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    if (!err &amp;&amp; cachedRender) {</span>
-<span class="cstat-no" title="statement not covered">      if (typeof cachedRender == 'string') {</span>
-<span class="cstat-no" title="statement not covered">        res.writeHead(200, {</span>
+<span class="cstat-no" title="statement not covered" >    if (!err &amp;&amp; cachedRender) {</span>
+<span class="cstat-no" title="statement not covered" >      if (typeof cachedRender == 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(200, {</span>
           "Content-Type": "text/html"
         });
-<span class="cstat-no" title="statement not covered">        return res.end(cachedRender);</span>
-      } else <span class="cstat-no" title="statement not covered">if (typeof cachedRender == 'object') {</span>
-<span class="cstat-no" title="statement not covered">        res.writeHead(cachedRender.status || 200, {</span>
+<span class="cstat-no" title="statement not covered" >        return res.end(cachedRender);</span>
+      } else <span class="cstat-no" title="statement not covered" >if (typeof cachedRender == 'object') {</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(cachedRender.status || 200, {</span>
           "Content-Type": "text/html"
         });
-<span class="cstat-no" title="statement not covered">        return res.end(cachedRender.body || '');</span>
+<span class="cstat-no" title="statement not covered" >        return res.end(cachedRender.body || '');</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    prerender.getPrerenderedPageResponse(req, <span class="fstat-no" title="function not covered">function(err, prerenderedResponse){</span></span>
-<span class="cstat-no" title="statement not covered">      prerender.afterRenderFn(err, req, prerenderedResponse);</span>
+<span class="cstat-no" title="statement not covered" >    prerender.getPrerenderedPageResponse(req, <span class="fstat-no" title="function not covered" >function(err, prerenderedResponse){</span></span>
+<span class="cstat-no" title="statement not covered" >      prerender.afterRenderFn(err, req, prerenderedResponse);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      if(prerenderedResponse){</span>
-<span class="cstat-no" title="statement not covered">        res.writeHead(prerenderedResponse.statusCode, prerenderedResponse.headers);</span>
-<span class="cstat-no" title="statement not covered">        return res.end(prerenderedResponse.body);</span>
+<span class="cstat-no" title="statement not covered" >      if(prerenderedResponse){</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(prerenderedResponse.statusCode, prerenderedResponse.headers);</span>
+<span class="cstat-no" title="statement not covered" >        return res.end(prerenderedResponse.body);</span>
       } else {
-<span class="cstat-no" title="statement not covered">        next(err);</span>
+<span class="cstat-no" title="statement not covered" >        next(err);</span>
       }
     });
   });
@@ -832,7 +836,8 @@ prerender.crawlerUserAgents = [
   'SkypeUriPreview',
   'nuzzel',
   'Discordbot',
-  'Google Page Speed'
+  'Google Page Speed',
+  'Qwantify'
 ];
 &nbsp;
 &nbsp;
@@ -881,174 +886,173 @@ prerender.extensionsToIgnore = [
 ];
 &nbsp;
 &nbsp;
-prerender.whitelisted = <span class="fstat-no" title="function not covered">function(whitelist) {</span>
-<span class="cstat-no" title="statement not covered">  prerender.whitelist = typeof whitelist === 'string' ? [whitelist] : whitelist;</span>
-<span class="cstat-no" title="statement not covered">  return this;</span>
+prerender.whitelisted = <span class="fstat-no" title="function not covered" >function(whitelist) {</span>
+<span class="cstat-no" title="statement not covered" >  prerender.whitelist = typeof whitelist === 'string' ? [whitelist] : whitelist;</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
 };
 &nbsp;
 &nbsp;
-prerender.blacklisted = <span class="fstat-no" title="function not covered">function(blacklist) {</span>
-<span class="cstat-no" title="statement not covered">  prerender.blacklist = typeof blacklist === 'string' ? [blacklist] : blacklist;</span>
-<span class="cstat-no" title="statement not covered">  return this;</span>
+prerender.blacklisted = <span class="fstat-no" title="function not covered" >function(blacklist) {</span>
+<span class="cstat-no" title="statement not covered" >  prerender.blacklist = typeof blacklist === 'string' ? [blacklist] : blacklist;</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
 };
 &nbsp;
 &nbsp;
-prerender.shouldShowPrerenderedPage = <span class="fstat-no" title="function not covered">function(req) {</span>
-<span class="cstat-no" title="statement not covered">  var userAgent = req.headers['user-agent']</span>
+prerender.shouldShowPrerenderedPage = <span class="fstat-no" title="function not covered" >function(req) {</span>
+<span class="cstat-no" title="statement not covered" >  var userAgent = req.headers['user-agent']</span>
     , bufferAgent = req.headers['x-bufferbot']
     , isRequestingPrerenderedPage = false;
 &nbsp;
-<span class="cstat-no" title="statement not covered">  if(!userAgent) <span class="cstat-no" title="statement not covered">return false;</span></span>
-<span class="cstat-no" title="statement not covered">  if(req.method != 'GET' &amp;&amp; req.method != 'HEAD') <span class="cstat-no" title="statement not covered">return false;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(!userAgent) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(req.method != 'GET' &amp;&amp; req.method != 'HEAD') <span class="cstat-no" title="statement not covered" >return false;</span></span>
 &nbsp;
   //if it contains _escaped_fragment_, show prerendered page
-<span class="cstat-no" title="statement not covered">  var parsedQuery = url.parse(req.url, true).query;</span>
-<span class="cstat-no" title="statement not covered">  if(parsedQuery &amp;&amp; parsedQuery['_escaped_fragment_'] !== undefined) <span class="cstat-no" title="statement not covered">isRequestingPrerenderedPage = true;</span></span>
+<span class="cstat-no" title="statement not covered" >  var parsedQuery = url.parse(req.url, true).query;</span>
+<span class="cstat-no" title="statement not covered" >  if(parsedQuery &amp;&amp; parsedQuery['_escaped_fragment_'] !== undefined) <span class="cstat-no" title="statement not covered" >isRequestingPrerenderedPage = true;</span></span>
 &nbsp;
   //if it is a bot...show prerendered page
-<span class="cstat-no" title="statement not covered">  if(prerender.crawlerUserAgents.some(<span class="fstat-no" title="function not covered">function(crawlerUserAgent){</span> <span class="cstat-no" title="statement not covered">return userAgent.toLowerCase().indexOf(crawlerUserAgent.toLowerCase()) !== -1;}</span>)) <span class="cstat-no" title="statement not covered">isRequestingPrerenderedPage = true;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(prerender.crawlerUserAgents.some(<span class="fstat-no" title="function not covered" >function(crawlerUserAgent){</span> <span class="cstat-no" title="statement not covered" >return userAgent.toLowerCase().indexOf(crawlerUserAgent.toLowerCase()) !== -1;}</span>)) <span class="cstat-no" title="statement not covered" >isRequestingPrerenderedPage = true;</span></span>
 &nbsp;
   //if it is BufferBot...show prerendered page
-<span class="cstat-no" title="statement not covered">  if(bufferAgent) <span class="cstat-no" title="statement not covered">isRequestingPrerenderedPage = true;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(bufferAgent) <span class="cstat-no" title="statement not covered" >isRequestingPrerenderedPage = true;</span></span>
 &nbsp;
   //if it is a bot and is requesting a resource...dont prerender
-<span class="cstat-no" title="statement not covered">  if(prerender.extensionsToIgnore.some(<span class="fstat-no" title="function not covered">function(extension){<span class="cstat-no" title="statement not covered"></span>return req.url.toLowerCase().indexOf(extension) !== -1;}</span>)) <span class="cstat-no" title="statement not covered">return false;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(prerender.extensionsToIgnore.some(<span class="fstat-no" title="function not covered" >function(extension){<span class="cstat-no" title="statement not covered" ></span>return req.url.toLowerCase().indexOf(extension) !== -1;}</span>)) <span class="cstat-no" title="statement not covered" >return false;</span></span>
 &nbsp;
   //if it is a bot and not requesting a resource and is not whitelisted...dont prerender
-<span class="cstat-no" title="statement not covered">  if(Array.isArray(this.whitelist) &amp;&amp; this.whitelist.every(<span class="fstat-no" title="function not covered">function(whitelisted){<span class="cstat-no" title="statement not covered"></span>return (new RegExp(whitelisted)).test(req.url) === false;}</span>)) <span class="cstat-no" title="statement not covered">return false;</span></span>
+<span class="cstat-no" title="statement not covered" >  if(Array.isArray(this.whitelist) &amp;&amp; this.whitelist.every(<span class="fstat-no" title="function not covered" >function(whitelisted){<span class="cstat-no" title="statement not covered" ></span>return (new RegExp(whitelisted)).test(req.url) === false;}</span>)) <span class="cstat-no" title="statement not covered" >return false;</span></span>
 &nbsp;
   //if it is a bot and not requesting a resource and is not blacklisted(url or referer)...dont prerender
-<span class="cstat-no" title="statement not covered">  if(Array.isArray(this.blacklist) &amp;&amp; this.blacklist.some(<span class="fstat-no" title="function not covered">function(blacklisted){</span></span>
-<span class="cstat-no" title="statement not covered">    var blacklistedUrl = false</span>
+<span class="cstat-no" title="statement not covered" >  if(Array.isArray(this.blacklist) &amp;&amp; this.blacklist.some(<span class="fstat-no" title="function not covered" >function(blacklisted){</span></span>
+<span class="cstat-no" title="statement not covered" >    var blacklistedUrl = false</span>
       , blacklistedReferer = false
       , regex = new RegExp(blacklisted);
 &nbsp;
-<span class="cstat-no" title="statement not covered">    blacklistedUrl = regex.test(req.url) === true;</span>
-<span class="cstat-no" title="statement not covered">    if(req.headers['referer']) <span class="cstat-no" title="statement not covered">blacklistedReferer = regex.test(req.headers['referer']) === true;</span></span>
+<span class="cstat-no" title="statement not covered" >    blacklistedUrl = regex.test(req.url) === true;</span>
+<span class="cstat-no" title="statement not covered" >    if(req.headers['referer']) <span class="cstat-no" title="statement not covered" >blacklistedReferer = regex.test(req.headers['referer']) === true;</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    return blacklistedUrl || blacklistedReferer;</span>
-  })) <span class="cstat-no" title="statement not covered">return false;</span>
+<span class="cstat-no" title="statement not covered" >    return blacklistedUrl || blacklistedReferer;</span>
+  })) <span class="cstat-no" title="statement not covered" >return false;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">  return isRequestingPrerenderedPage;</span>
+<span class="cstat-no" title="statement not covered" >  return isRequestingPrerenderedPage;</span>
 };
 &nbsp;
 &nbsp;
 prerender.prerenderServerRequestOptions = {};
 &nbsp;
-prerender.getPrerenderedPageResponse = <span class="fstat-no" title="function not covered">function(req, callback) {</span>
-<span class="cstat-no" title="statement not covered">  var options = {</span>
+prerender.getPrerenderedPageResponse = <span class="fstat-no" title="function not covered" >function(req, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var options = {</span>
     uri: url.parse(prerender.buildApiUrl(req)),
     followRedirect: false,
     headers: {}
   };
-<span class="cstat-no" title="statement not covered">  for (var attrname in this.prerenderServerRequestOptions) { <span class="cstat-no" title="statement not covered">options[attrname] = this.prerenderServerRequestOptions[attrname]; </span>}</span>
-<span class="cstat-no" title="statement not covered">  if (this.forwardHeaders === true) {</span>
-<span class="cstat-no" title="statement not covered">    Object.keys(req.headers).forEach(<span class="fstat-no" title="function not covered">function(h) {</span></span>
+<span class="cstat-no" title="statement not covered" >  for (var attrname in this.prerenderServerRequestOptions) { <span class="cstat-no" title="statement not covered" >options[attrname] = this.prerenderServerRequestOptions[attrname]; </span>}</span>
+<span class="cstat-no" title="statement not covered" >  if (this.forwardHeaders === true) {</span>
+<span class="cstat-no" title="statement not covered" >    Object.keys(req.headers).forEach(<span class="fstat-no" title="function not covered" >function(h) {</span></span>
       // Forwarding the host header can cause issues with server platforms that require it to match the URL
-<span class="cstat-no" title="statement not covered">      if (h == 'host') {</span>
-<span class="cstat-no" title="statement not covered">        return;</span>
+<span class="cstat-no" title="statement not covered" >      if (h == 'host') {</span>
+<span class="cstat-no" title="statement not covered" >        return;</span>
       }
-<span class="cstat-no" title="statement not covered">      options.headers[h] = req.headers[h];</span>
+<span class="cstat-no" title="statement not covered" >      options.headers[h] = req.headers[h];</span>
     });
   }
-<span class="cstat-no" title="statement not covered">  options.headers['User-Agent'] = req.headers['user-agent'];</span>
-<span class="cstat-no" title="statement not covered">  options.headers['Accept-Encoding'] = 'gzip';</span>
-<span class="cstat-no" title="statement not covered">  if(this.prerenderToken || process.env.PRERENDER_TOKEN) {</span>
-<span class="cstat-no" title="statement not covered">    options.headers['X-Prerender-Token'] = this.prerenderToken || process.env.PRERENDER_TOKEN;</span>
+<span class="cstat-no" title="statement not covered" >  options.headers['User-Agent'] = req.headers['user-agent'];</span>
+<span class="cstat-no" title="statement not covered" >  options.headers['Accept-Encoding'] = 'gzip';</span>
+<span class="cstat-no" title="statement not covered" >  if(this.prerenderToken || process.env.PRERENDER_TOKEN) {</span>
+<span class="cstat-no" title="statement not covered" >    options.headers['X-Prerender-Token'] = this.prerenderToken || process.env.PRERENDER_TOKEN;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered">  request.get(options).on('response', <span class="fstat-no" title="function not covered">function(response) {</span></span>
-<span class="cstat-no" title="statement not covered">    if(response.headers['content-encoding'] &amp;&amp; response.headers['content-encoding'] === 'gzip') {</span>
-<span class="cstat-no" title="statement not covered">      prerender.gunzipResponse(response, callback);</span>
+<span class="cstat-no" title="statement not covered" >  request.get(options).on('response', <span class="fstat-no" title="function not covered" >function(response) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if(response.headers['content-encoding'] &amp;&amp; response.headers['content-encoding'] === 'gzip') {</span>
+<span class="cstat-no" title="statement not covered" >      prerender.gunzipResponse(response, callback);</span>
     } else {
-<span class="cstat-no" title="statement not covered">      prerender.plainResponse(response, callback);</span>
+<span class="cstat-no" title="statement not covered" >      prerender.plainResponse(response, callback);</span>
     }
-  }).on('error', <span class="fstat-no" title="function not covered">function(err) {</span>
-<span class="cstat-no" title="statement not covered">    callback(err);</span>
+  }).on('error', <span class="fstat-no" title="function not covered" >function(err) {</span>
+<span class="cstat-no" title="statement not covered" >    callback(err);</span>
   });
 };
 &nbsp;
-prerender.gunzipResponse = <span class="fstat-no" title="function not covered">function(response, callback) {</span>
-<span class="cstat-no" title="statement not covered">  var gunzip = zlib.createGunzip()</span>
+prerender.gunzipResponse = <span class="fstat-no" title="function not covered" >function(response, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var gunzip = zlib.createGunzip()</span>
     , content = '';
 &nbsp;
-<span class="cstat-no" title="statement not covered">  gunzip.on('data', <span class="fstat-no" title="function not covered">function(chunk) {</span></span>
-<span class="cstat-no" title="statement not covered">    content += chunk;</span>
+<span class="cstat-no" title="statement not covered" >  gunzip.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+<span class="cstat-no" title="statement not covered" >    content += chunk;</span>
   });
-<span class="cstat-no" title="statement not covered">  gunzip.on('end', <span class="fstat-no" title="function not covered">function() {</span></span>
-<span class="cstat-no" title="statement not covered">    response.body = content;</span>
-<span class="cstat-no" title="statement not covered">    delete response.headers['content-encoding'];</span>
-<span class="cstat-no" title="statement not covered">    delete response.headers['content-length'];</span>
-<span class="cstat-no" title="statement not covered">    callback(null, response);</span>
+<span class="cstat-no" title="statement not covered" >  gunzip.on('end', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    response.body = content;</span>
+<span class="cstat-no" title="statement not covered" >    delete response.headers['content-encoding'];</span>
+<span class="cstat-no" title="statement not covered" >    delete response.headers['content-length'];</span>
+<span class="cstat-no" title="statement not covered" >    callback(null, response);</span>
   });
-<span class="cstat-no" title="statement not covered">  gunzip.on('error', <span class="fstat-no" title="function not covered">function(err){</span></span>
-<span class="cstat-no" title="statement not covered">    callback(err);</span>
+<span class="cstat-no" title="statement not covered" >  gunzip.on('error', <span class="fstat-no" title="function not covered" >function(err){</span></span>
+<span class="cstat-no" title="statement not covered" >    callback(err);</span>
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered">  response.pipe(gunzip);</span>
+<span class="cstat-no" title="statement not covered" >  response.pipe(gunzip);</span>
 };
 &nbsp;
-prerender.plainResponse = <span class="fstat-no" title="function not covered">function(response, callback) {</span>
-<span class="cstat-no" title="statement not covered">  var content = '';</span>
+prerender.plainResponse = <span class="fstat-no" title="function not covered" >function(response, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var content = '';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">  response.on('data', <span class="fstat-no" title="function not covered">function(chunk) {</span></span>
-<span class="cstat-no" title="statement not covered">    content += chunk;</span>
+<span class="cstat-no" title="statement not covered" >  response.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+<span class="cstat-no" title="statement not covered" >    content += chunk;</span>
   });
-<span class="cstat-no" title="statement not covered">  response.on('end', <span class="fstat-no" title="function not covered">function() {</span></span>
-<span class="cstat-no" title="statement not covered">    response.body = content;</span>
-<span class="cstat-no" title="statement not covered">    callback(null, response);</span>
+<span class="cstat-no" title="statement not covered" >  response.on('end', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    response.body = content;</span>
+<span class="cstat-no" title="statement not covered" >    callback(null, response);</span>
   });
 };
 &nbsp;
 &nbsp;
-prerender.buildApiUrl = <span class="fstat-no" title="function not covered">function(req) {</span>
-<span class="cstat-no" title="statement not covered">  var prerenderUrl = prerender.getPrerenderServiceUrl();</span>
-<span class="cstat-no" title="statement not covered">  var forwardSlash = prerenderUrl.indexOf('/', prerenderUrl.length - 1) !== -1 ? '' : '/';</span>
+prerender.buildApiUrl = <span class="fstat-no" title="function not covered" >function(req) {</span>
+<span class="cstat-no" title="statement not covered" >  var prerenderUrl = prerender.getPrerenderServiceUrl();</span>
+<span class="cstat-no" title="statement not covered" >  var forwardSlash = prerenderUrl.indexOf('/', prerenderUrl.length - 1) !== -1 ? '' : '/';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">  var protocol = req.connection.encrypted ? "https" : "http";</span>
-<span class="cstat-no" title="statement not covered">  if (req.headers['cf-visitor']) {</span>
-<span class="cstat-no" title="statement not covered">    var match = req.headers['cf-visitor'].match(/"scheme":"(http|https)"/);</span>
-<span class="cstat-no" title="statement not covered">    if (match) <span class="cstat-no" title="statement not covered">protocol = match[1];</span></span>
+<span class="cstat-no" title="statement not covered" >  var protocol = req.connection.encrypted ? "https" : "http";</span>
+<span class="cstat-no" title="statement not covered" >  if (req.headers['cf-visitor']) {</span>
+<span class="cstat-no" title="statement not covered" >    var match = req.headers['cf-visitor'].match(/"scheme":"(http|https)"/);</span>
+<span class="cstat-no" title="statement not covered" >    if (match) <span class="cstat-no" title="statement not covered" >protocol = match[1];</span></span>
   }
-<span class="cstat-no" title="statement not covered">  if (req.headers['x-forwarded-proto']) {</span>
-<span class="cstat-no" title="statement not covered">    protocol = req.headers['x-forwarded-proto'].split(',')[0];</span>
+<span class="cstat-no" title="statement not covered" >  if (req.headers['x-forwarded-proto']) {</span>
+<span class="cstat-no" title="statement not covered" >    protocol = req.headers['x-forwarded-proto'].split(',')[0];</span>
   }
-<span class="cstat-no" title="statement not covered">  if (this.protocol) {</span>
-<span class="cstat-no" title="statement not covered">    protocol = this.protocol;</span>
+<span class="cstat-no" title="statement not covered" >  if (this.protocol) {</span>
+<span class="cstat-no" title="statement not covered" >    protocol = this.protocol;</span>
   }
-<span class="cstat-no" title="statement not covered">  var fullUrl = protocol + "://" + (this.host || req.headers['x-forwarded-host'] || req.headers['host']) + req.url;</span>
-<span class="cstat-no" title="statement not covered">  return prerenderUrl + forwardSlash + fullUrl;</span>
+<span class="cstat-no" title="statement not covered" >  var fullUrl = protocol + "://" + (this.host || req.headers['x-forwarded-host'] || req.headers['host']) + req.url;</span>
+<span class="cstat-no" title="statement not covered" >  return prerenderUrl + forwardSlash + fullUrl;</span>
 };
 &nbsp;
-prerender.getPrerenderServiceUrl = <span class="fstat-no" title="function not covered">function() {</span>
-<span class="cstat-no" title="statement not covered">  return this.prerenderServiceUrl || process.env.PRERENDER_SERVICE_URL || 'http://service.prerender.io/';</span>
+prerender.getPrerenderServiceUrl = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  return this.prerenderServiceUrl || process.env.PRERENDER_SERVICE_URL || 'http://service.prerender.io/';</span>
 };
 &nbsp;
-prerender.beforeRenderFn = <span class="fstat-no" title="function not covered">function(req, done) {</span>
-<span class="cstat-no" title="statement not covered">  if (!this.beforeRender) <span class="cstat-no" title="statement not covered">return done();</span></span>
+prerender.beforeRenderFn = <span class="fstat-no" title="function not covered" >function(req, done) {</span>
+<span class="cstat-no" title="statement not covered" >  if (!this.beforeRender) <span class="cstat-no" title="statement not covered" >return done();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">  return this.beforeRender(req, done);</span>
-};
-&nbsp;
-&nbsp;
-prerender.afterRenderFn = <span class="fstat-no" title="function not covered">function(err, req, prerender_res) {</span>
-<span class="cstat-no" title="statement not covered">  if (!this.afterRender) <span class="cstat-no" title="statement not covered">return;</span></span>
-&nbsp;
-<span class="cstat-no" title="statement not covered">  this.afterRender(err, req, prerender_res);</span>
+<span class="cstat-no" title="statement not covered" >  return this.beforeRender(req, done);</span>
 };
 &nbsp;
 &nbsp;
-prerender.set = <span class="fstat-no" title="function not covered">function(name, value) {</span>
-<span class="cstat-no" title="statement not covered">  this[name] = value;</span>
-<span class="cstat-no" title="statement not covered">  return this;</span>
+prerender.afterRenderFn = <span class="fstat-no" title="function not covered" >function(err, req, prerender_res) {</span>
+<span class="cstat-no" title="statement not covered" >  if (!this.afterRender) <span class="cstat-no" title="statement not covered" >return;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.afterRender(err, req, prerender_res);</span>
+};
+&nbsp;
+&nbsp;
+prerender.set = <span class="fstat-no" title="function not covered" >function(name, value) {</span>
+<span class="cstat-no" title="statement not covered" >  this[name] = value;</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
 };
 &nbsp;
 &nbsp;</pre></td></tr>
-</tbody></table></pre>
+</table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 23:58:05 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 18 2017 22:01:37 GMT+0000 (UTC)</div>
 </div>
-
-
-</body></html>
+</body>
+</html>
